@@ -215,13 +215,26 @@ html.no-webgl .gl{ display:none; }
   justify-items:center; text-align:center;
   padding-block: 14vh;
 }
-.product__copy{ max-width: 72ch; }
+.product__copy{ max-width: 72ch; position:relative; z-index:2; }
+/* the 3D devices are decorative, so a radial scrim keeps the copy readable */
+.product__grid::before{
+  content:''; position:absolute; left:50%; top:50%;
+  transform: translate(-50%,-50%);
+  width: min(1080px, 96%); height: min(78vh, 640px);
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+    rgba(5,6,10,.96) 0%, rgba(5,6,10,.90) 52%,
+    rgba(5,6,10,.55) 76%, rgba(5,6,10,0) 100%);
+  z-index:0; pointer-events:none;
+}
 .product__stage{
-  position:absolute; right:-4%; top:50%; transform: translateY(-50%);
-  width: clamp(300px, 40vw, 560px);
-  z-index:2; pointer-events:none; opacity:.62;
+  position:absolute; right:-10%; top:50%; transform: translateY(-50%);
+  width: clamp(280px, 34vw, 460px);
+  z-index:0; pointer-events:none; opacity:.42;
   margin:0;
 }
+/* the WebGL layer behind the products is texture, not content */
+.product .gl{ opacity:.55; }
 
 .product__tag{
   font-family:var(--font-mono); font-size:.64rem; letter-spacing:.26em; text-transform:uppercase;
@@ -701,7 +714,9 @@ html.no-webgl .gl{ display:none; }
   .disciplines__wrap{ grid-template-columns:1fr; }
   .disciplines__head, .pillars{ padding-top:0; }
   .product__stage{ position:relative; right:auto; top:auto; transform:none;
-                   width:min(520px,92%); margin:40px auto 0; opacity:.5; }
+                   width:min(440px,88%); margin:36px auto 0; opacity:.34; }
+  .product__grid::before{ height:min(70%,520px); background: radial-gradient(closest-side,
+    rgba(5,6,10,.94) 0%, rgba(5,6,10,.85) 58%, rgba(5,6,10,0) 100%); }
   .values__grid, .insights__grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
   .icard--wide{ grid-column: span 2; }
   .footer__wrap{ grid-template-columns: 1fr 1fr; gap:34px; }
