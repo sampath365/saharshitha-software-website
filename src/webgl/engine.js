@@ -248,21 +248,25 @@ export function createEngine() {
 
     for (const s of scenes) {
       const r = s.el.getBoundingClientRect();
-      // visible intersection with the viewport
-      const top = Math.max(0, r.top);
-      const bottom = Math.min(vh, r.bottom);
-      const left = Math.max(0, r.left);
-      const right = Math.min(vw, r.right);
+      const sr = s.section.getBoundingClientRect();
+
+      // Clip the render region to the section box as well as the viewport.
+      // A sticky placeholder can extend past its section (that is how the
+      // pinned viewports work), and CSS overflow clips it visually — but the
+      // engine draws into one fixed canvas that CSS never clips, so without
+      // this intersection a scene paints over the section below it.
+      const top = Math.max(0, r.top, sr.top);
+      const bottom = Math.min(vh, r.bottom, sr.bottom);
+      const left = Math.max(0, r.left, sr.left);
+      const right = Math.min(vw, r.right, sr.right);
       const h = bottom - top;
       const w = right - left;
 
-      if (h < 4 || w < 4 || r.bottom < -vh || r.top > vh * 2) {
+      if (h < 4 || w < 4) {
         s.obj.visible = false;
         continue;
       }
       s.obj.visible = true;
-
-      const sr = s.section.getBoundingClientRect();
       const p = clamp((vh - sr.top) / (sr.height + vh));
       s.progress = p;
       s.smooth = damp(s.smooth, p, 4.5, dt);
