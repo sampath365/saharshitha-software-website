@@ -181,10 +181,9 @@ html.no-webgl .gl{ display:none; }
 .products__head{ max-width: var(--wrap); margin-bottom: clamp(50px,7vw,90px); }
 
 .product{
-  position:relative;
+  position:relative; z-index:2;
   min-height: 128vh;
   overflow:clip;
-  isolation:isolate;
 }
 /* the sticky canvas is a full-width block, so the section must stay in normal
    flow; centring happens inside the content wrapper instead */
@@ -215,26 +214,26 @@ html.no-webgl .gl{ display:none; }
   justify-items:center; text-align:center;
   padding-block: 14vh;
 }
-.product__copy{ max-width: 72ch; position:relative; z-index:2; }
-/* the 3D devices are decorative, so a radial scrim keeps the copy readable */
-.product__grid::before{
-  content:''; position:absolute; left:50%; top:50%;
-  transform: translate(-50%,-50%);
-  width: min(1080px, 96%); height: min(78vh, 640px);
-  border-radius: 50%;
-  background: radial-gradient(closest-side,
-    rgba(5,6,10,.96) 0%, rgba(5,6,10,.90) 52%,
-    rgba(5,6,10,.55) 76%, rgba(5,6,10,0) 100%);
-  z-index:0; pointer-events:none;
+.product__copy{
+  position:relative; z-index:2;
+  max-width: min(72ch, 92%);
+  padding: clamp(30px, 4vw, 54px) clamp(24px, 3.4vw, 46px);
+  border-radius: 30px;
+  background: rgba(6,8,14,.95);
+  border: 1px solid rgba(255,255,255,.07);
+  box-shadow: 0 40px 120px -50px rgba(0,0,0,.95);
+  backdrop-filter: blur(8px);
 }
+
 .product__stage{
-  position:absolute; right:-10%; top:50%; transform: translateY(-50%);
-  width: clamp(280px, 34vw, 460px);
-  z-index:0; pointer-events:none; opacity:.42;
+  position:absolute; right:-15%; top:50%; transform: translateY(-50%);
+  width: clamp(240px, 28vw, 400px);
+  z-index:0; pointer-events:none; opacity:.3;
   margin:0;
 }
-/* the WebGL layer behind the products is texture, not content */
-.product .gl{ opacity:.55; }
+/* the WebGL layer behind the products is texture, not content: it stays at the
+   section edges and well behind the copy so the text never competes with it */
+.product .gl{ opacity:.3; }
 
 .product__tag{
   font-family:var(--font-mono); font-size:.64rem; letter-spacing:.26em; text-transform:uppercase;
@@ -267,6 +266,7 @@ html.no-webgl .gl{ display:none; }
 
 .product__stageFrame{
   position:relative;
+  opacity:.5;
   border-radius: var(--radius);
   border:1px solid var(--line);
   background: linear-gradient(150deg, rgba(255,255,255,.05), rgba(255,255,255,.012));
@@ -321,80 +321,97 @@ html.no-webgl .gl{ display:none; }
   overflow:hidden;
 }
 .tech__stage .gl{ position:absolute; inset:0; }
-/* Solar core: a disc with a corona, soft bloom and slowly rotating rays.
-   All layers are sized from --core so they scale together. */
+/* The original glass core, now with a fire effect layered behind it. */
 .tech__core{
   --core: clamp(120px, 15vw, 190px);
   position:absolute; left:50%; top:50%; transform: translate(-50%,-50%);
   width: var(--core); aspect-ratio:1; border-radius:50%;
   display:grid; place-items:center;
-  border:1px solid rgba(255,255,255,.14);
+  background: radial-gradient(circle at 40% 35%, rgba(255,255,255,.14), rgba(95,227,255,.06) 45%, transparent 72%);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(6px);
   z-index:2;
-  animation: coreBreathe 7s var(--ease-io) infinite;
-  isolation:isolate;
+  animation: corePulse 6.5s var(--ease-io) infinite;
 }
-/* the glowing disc itself */
-.tech__disc{
-  position:absolute; inset:0; border-radius:50%;
-  background:
-    radial-gradient(circle at 38% 32%, #ffffff 0%, #e8faff 16%, #9fe9ff 38%, #4fb8f0 62%, #2f6fd0 82%, #2350a8 100%);
-  box-shadow:
-    0 0 22px 4px rgba(150,232,255,.55),
-    0 0 60px 12px rgba(95,227,255,.32),
-    inset 0 0 42px rgba(255,255,255,.35);
-}
-/* soft bloom halo in front of everything */
-.tech__flare{
-  position:absolute; left:50%; top:50%; width:300%; aspect-ratio:1;
-  transform: translate(-50%,-50%);
-  border-radius:50%;
-  background: radial-gradient(circle,
-    rgba(190,242,255,.5) 0%, rgba(115,214,255,.26) 26%,
-    rgba(91,69,255,.14) 52%, rgba(91,69,255,0) 72%);
-  filter: blur(16px);
-  animation: flarePulse 7s var(--ease-io) infinite;
-}
-/* corona ring hugging the limb */
-.tech__corona{
-  position:absolute; inset:-6%; border-radius:50%;
-  background: radial-gradient(circle,
-    rgba(255,255,255,0) 58%, rgba(190,242,255,.42) 70%,
-    rgba(95,227,255,.22) 78%, rgba(95,227,255,0) 88%);
-  filter: blur(6px);
-}
-/* rotating rays, masked to a ring so the centre stays clean */
-.tech__rays{
-  position:absolute; left:50%; top:50%; width:420%; aspect-ratio:1;
-  transform: translate(-50%,-50%);
-  animation: raysSpin 60s linear infinite;
-  -webkit-mask-image: radial-gradient(circle, transparent 12%, #000 22%, #000 62%, transparent 74%);
-          mask-image: radial-gradient(circle, transparent 12%, #000 22%, #000 62%, transparent 74%);
-  background: repeating-conic-gradient(from 0deg,
-    rgba(180,238,255,.34) 0deg 1.1deg, rgba(180,238,255,0) 1.1deg 7.5deg);
+@keyframes corePulse{
+  0%,100%{ box-shadow:0 0 0 0 rgba(95,227,255,.10) }
+  50%    { box-shadow:0 0 60px 8px rgba(95,227,255,.16) }
 }
 .tech__coreRing{
   position:absolute; inset:-14%; border-radius:50%;
-  border:1px solid rgba(95,227,255,.24);
+  border:1px solid rgba(95,227,255,.18);
   animation: spin 26s linear infinite;
 }
-.tech__coreRing--2{ inset:-28%; border-color: rgba(139,123,255,.20); animation-duration:38s; animation-direction:reverse; border-style:dashed; }
+.tech__coreRing--2{ inset:-28%; border-color: rgba(139,123,255,.16); animation-duration:38s; animation-direction:reverse; border-style:dashed; }
 @keyframes spin{ to{ transform: rotate(360deg); } }
-@keyframes raysSpin{ to{ transform: translate(-50%,-50%) rotate(360deg); } }
-@keyframes coreBreathe{
-  0%,100%{ transform: translate(-50%,-50%) scale(1); }
-  50%    { transform: translate(-50%,-50%) scale(1.035); }
+
+/* ---- fire effect ---- */
+/* Ember halo licking around the rim. */
+.tech__flare{
+  position:absolute; left:50%; top:50%; width:280%; aspect-ratio:1;
+  transform: translate(-50%,-50%); border-radius:50%;
+  background: radial-gradient(circle,
+    rgba(255,214,120,.42) 0%, rgba(255,140,60,.34) 22%,
+    rgba(240,80,30,.24) 42%, rgba(170,40,10,.10) 62%, rgba(170,40,10,0) 78%);
+  filter: blur(18px);
+  animation: fireFlicker 3.2s var(--ease-io) infinite;
+  z-index:-3;
 }
-@keyframes flarePulse{
-  0%,100%{ opacity:.72; transform: translate(-50%,-50%) scale(1); }
-  50%    { opacity:1;   transform: translate(-50%,-50%) scale(1.08); }
+/* Corona built from irregular blobs so the edge reads as flame, not a ring. */
+.tech__corona{
+  position:absolute; left:50%; top:50%; width:190%; aspect-ratio:1;
+  transform: translate(-50%,-50%); border-radius:50%;
+  background:
+    radial-gradient(38% 30% at 26% 22%, rgba(255,196,90,.55), transparent 70%),
+    radial-gradient(34% 28% at 74% 30%, rgba(255,150,60,.5), transparent 72%),
+    radial-gradient(40% 34% at 64% 78%, rgba(255,110,40,.42), transparent 70%),
+    radial-gradient(32% 28% at 30% 74%, rgba(255,175,80,.45), transparent 72%),
+    radial-gradient(closest-side, rgba(255,170,70,.22), rgba(230,80,20,.10) 68%, transparent 88%);
+  filter: blur(10px);
+  mix-blend-mode: screen;
+  animation: fireFlicker 2.4s var(--ease-io) infinite reverse;
+  z-index:-2;
 }
+/* Soft flame tongues rotating slowly around the core. */
+.tech__rays{
+  position:absolute; left:50%; top:50%; width:400%; aspect-ratio:1;
+  transform: translate(-50%,-50%);
+  animation: fireRotate 34s linear infinite;
+  mix-blend-mode: screen;
+  z-index:-1;
+  -webkit-mask-image: radial-gradient(circle, transparent 24%, #000 34%, #000 58%, transparent 72%);
+          mask-image: radial-gradient(circle, transparent 24%, #000 34%, #000 58%, transparent 72%);
+  background: repeating-conic-gradient(from 0deg,
+    rgba(255,180,80,.34) 0deg 3deg, rgba(255,120,40,0) 3deg 11deg,
+    rgba(255,90,30,.22) 11deg 14deg, rgba(255,90,30,0) 14deg 23deg);
+  filter: blur(3px);
+}
+/* Inner ember glow that keeps the glass from looking hollow. */
+.tech__disc{
+  position:absolute; inset:14%; border-radius:50%;
+  background: radial-gradient(circle,
+    rgba(255,225,150,.34) 0%, rgba(255,150,60,.22) 45%, rgba(230,80,20,0) 75%);
+  filter: blur(9px);
+  mix-blend-mode: screen;
+  z-index:-1;
+}
+/* The label keeps its original styling above the fire. */
 .tech__coreLabel{
   position:relative; z-index:2;
   font-family:var(--font-mono); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase;
-  text-align:center; color:#04070e; line-height:1.7;
-  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  text-align:center; color: var(--ink-2); line-height:1.7;
+  text-shadow: 0 0 12px rgba(255,150,60,.5), 0 0 3px rgba(4,6,12,.9);
 }
-.tech__coreLabel em{ display:block; font-style:normal; color:#0a2a4d; }
+.tech__coreLabel em{ display:block; font-style:normal; color: #ffc46b; }
+@keyframes fireFlicker{
+  0%,100%{ opacity:.78; transform: translate(-50%,-50%) scale(1); }
+  28%    { opacity:1;   transform: translate(-50%,-50%) scale(1.06); }
+  46%    { opacity:.86; transform: translate(-50%,-50%) scale(1.02); }
+  68%    { opacity:.96; transform: translate(-50%,-50%) scale(1.05); }
+}
+@keyframes fireRotate{
+  to{ transform: translate(-50%,-50%) rotate(360deg); }
+}
 
 .tech__nodes{ position:absolute; inset:0; z-index:3; }
 .node{
