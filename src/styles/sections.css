@@ -390,8 +390,8 @@ html.no-webgl .gl{ display:none; }
 .tech__disc{
   position:absolute; inset:14%; border-radius:50%;
   background: radial-gradient(circle,
-    rgba(255,225,150,.34) 0%, rgba(255,150,60,.22) 45%, rgba(230,80,20,0) 75%);
-  filter: blur(9px);
+    rgba(255,225,150,.18) 0%, rgba(255,150,60,.11) 48%, rgba(230,80,20,0) 76%);
+  filter: blur(8px);
   mix-blend-mode: screen;
   z-index:-1;
 }
@@ -400,9 +400,8 @@ html.no-webgl .gl{ display:none; }
   position:relative; z-index:2;
   font-family:var(--font-mono); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase;
   text-align:center; color: var(--ink-2); line-height:1.7;
-  text-shadow: 0 0 12px rgba(255,150,60,.5), 0 0 3px rgba(4,6,12,.9);
 }
-.tech__coreLabel em{ display:block; font-style:normal; color: #ffc46b; }
+.tech__coreLabel em{ display:block; font-style:normal; color: var(--cyan); }
 @keyframes fireFlicker{
   0%,100%{ opacity:.78; transform: translate(-50%,-50%) scale(1); }
   28%    { opacity:1;   transform: translate(-50%,-50%) scale(1.06); }
