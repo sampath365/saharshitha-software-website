@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Saharshitha Software — Technology, Innovation, Digital Products</title>
+<meta name="description" content="Saharshitha Software creates technology, digital products, and experiences for a connected future. Home of EGAN and Callesense." />
+<meta name="theme-color" content="#05060a" />
+<meta property="og:title" content="Saharshitha Software" />
+<meta property="og:description" content="We Build What's Next. Technology, innovation and digital products from Saharshitha Software." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070a12'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='18' fill='%2364e6ff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+<!-- ============================== LOADER ============================== -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__word" id="loaderWord">S</div>
+    <div class="loader__meta">
+      <span class="loader__label">SAHARSHITHA SOFTWARE</span>
+      <span class="loader__bar"><i id="loaderBar"></i></span>
+    </div>
+  </div>
+  <div class="loader__veil"></div>
+</div>
+
+<!-- ============================== CURSOR ============================== -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__dot"></span>
+  <span class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></span>
+</div>
+
+<!-- ============================== NAV ============================== -->
+<header class="nav" id="nav">
+  <div class="nav__shell">
+    <a class="nav__brand" href="#home" data-cursor="Home">
+      <span class="nav__mark" aria-hidden="true">S</span>
+      <span class="nav__name">SAHARSHITHA <em>SOFTWARE</em></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#home" class="is-active" data-nav>Home</a>
+      <a href="#about" data-nav>About</a>
+      <a href="#products" data-nav>Products</a>
+      <a href="#technology" data-nav>Technology</a>
+      <a href="#careers" data-nav>Careers</a>
+      <a href="#insights" data-nav>Insights</a>
+      <a href="#contact" data-nav>Contact</a>
+      <span class="nav__indicator" id="navIndicator" aria-hidden="true"></span>
+    </nav>
+
+    <div class="nav__right">
+      <a class="btn btn--ghost btn--sm magnetic" href="#contact" data-cursor="Say hello">
+        <span>Let's Talk</span>
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================== MOBILE MENU ============================== -->
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__bg" aria-hidden="true"></div>
+  <div class="menu__inner">
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="#home"><span class="menu__idx">01</span>Home</a>
+      <a href="#about"><span class="menu__idx">02</span>About</a>
+      <a href="#products"><span class="menu__idx">03</span>Products</a>
+      <a href="#technology"><span class="menu__idx">04</span>Technology</a>
+      <a href="#careers"><span class="menu__idx">05</span>Careers</a>
+      <a href="#insights"><span class="menu__idx">06</span>Insights</a>
+      <a href="#contact"><span class="menu__idx">07</span>Contact</a>
+    </nav>
+    <div class="menu__foot">
+      <span>Technology • Innovation • Digital Products</span>
+      <a class="btn btn--primary magnetic" href="#contact"><span>Let's Talk</span></a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============================== HERO ============================== -->
+<section class="hero" id="home" data-scene-section="hero">
+  <div class="hero__pin">
+  <canvas class="gl gl--pin" data-scene="hero" aria-hidden="true"></canvas>
+  <div class="hero__gradient" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <p class="eyebrow hero__eyebrow" data-reveal="up">
+      <span class="eyebrow__dot"></span>Technology <i>•</i> Innovation <i>•</i> Digital Products
+    </p>
+
+    <h1 class="hero__title">
+      <span class="line"><span class="word">We</span> <span class="word">Build</span></span>
+      <span class="line"><span class="word grad">What's</span> <span class="word grad">Next.</span></span>
+    </h1>
+
+    <p class="hero__sub" data-reveal="up" data-reveal-delay="0.15">
+      Saharshitha Software creates technology, digital products, and experiences for a connected future.
+    </p>
+
+    <div class="hero__cta" data-reveal="up" data-reveal-delay="0.25">
+      <a class="btn btn--primary magnetic" href="#products" data-cursor="See products">
+        <span>Explore Our Products</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" /></svg>
+      </a>
+      <a class="btn btn--line magnetic" href="#contact">
+        <span>Let's Talk</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero__foot">
+    <a class="scrollcue" href="#about" aria-label="Scroll to explore">
+      <span class="scrollcue__text">Scroll to explore</span>
+      <span class="scrollcue__line" aria-hidden="true"><i></i></span>
+    </a>
+    <div class="hero__stat">
+      <div class="hero__statItem"><b>02</b><span>Digital products</span></div>
+      <div class="hero__statItem"><b>08</b><span>Engineering disciplines</span></div>
+      <div class="hero__statItem"><b>∞</b><span>Room to build</span></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ============================== INTRO / MANIFESTO ============================== -->
+<section class="intro" id="about">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>Who we are</p>
+    <h2 class="display intro__lead" data-split="words">
+      Technology should make the impossible feel simple.
+    </h2>
+    <p class="intro__body" data-reveal="up" data-reveal-delay="0.1">
+      Saharshitha Software builds digital products and technology solutions designed around real-world needs.
+      We work at the meeting point of product thinking, engineering and design — shipping software that
+      people can actually use, and that holds up as it grows.
+    </p>
+    <div class="intro__meta">
+      <div class="intro__cell" data-reveal="up">
+        <b>Product-led</b>
+        <span>We start from the problem, not the framework.</span>
+      </div>
+      <div class="intro__cell" data-reveal="up" data-reveal-delay="0.08">
+        <b>Engineering-first</b>
+        <span>Performance, reliability and clarity by default.</span>
+      </div>
+      <div class="intro__cell" data-reveal="up" data-reveal-delay="0.16">
+        <b>Built to evolve</b>
+        <span>Systems designed to keep improving after launch.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DISCIPLINES (3D STRUCTURE) ============================== -->
+<section class="disciplines" data-scene-section="structure">
+  <canvas class="gl" data-scene="structure" aria-hidden="true"></canvas>
+  <div class="wrap disciplines__wrap">
+    <div class="disciplines__head">
+      <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>What we do</p>
+      <h2 class="display display--sm" data-split="words">Four disciplines. One system.</h2>
+      <p class="lede" data-reveal="up">
+        Nothing we ship comes from a single team. Product, engineering, design and research move
+        together — each one making the others sharper.
+      </p>
+    </div>
+
+    <div class="pillars" id="pillars">
+      <article class="pillar" data-reveal="up" data-pillar="0">
+        <span class="pillar__num">01</span>
+        <h3>Product Thinking</h3>
+        <p>We define the problem precisely before we write a line of code — and keep asking whether the answer is still the right one.</p>
+      </article>
+      <article class="pillar" data-reveal="up" data-reveal-delay="0.08" data-pillar="1">
+        <span class="pillar__num">02</span>
+        <h3>Engineering</h3>
+        <p>Clear architecture, predictable performance, and code we are happy to maintain years from now.</p>
+      </article>
+      <article class="pillar" data-reveal="up" data-reveal-delay="0.16" data-pillar="2">
+        <span class="pillar__num">03</span>
+        <h3>Design</h3>
+        <p>Interfaces that feel obvious on first use and stay calm under real-world complexity.</p>
+      </article>
+      <article class="pillar" data-reveal="up" data-reveal-delay="0.24" data-pillar="3">
+        <span class="pillar__num">04</span>
+        <h3>Innovation</h3>
+        <p>Research and experimentation that earns its place in the product rather than staying in a deck.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PRODUCTS ============================== -->
+<section class="products" id="products">
+  <div class="wrap products__head">
+    <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>Product portfolio</p>
+    <h2 class="display" data-split="words">Our Products</h2>
+    <p class="lede" data-reveal="up">Technology built to solve real problems.</p>
+  </div>
+
+  <!-- EGAN -->
+  <article class="product product--egan" data-scene-section="egan" data-product="egan">
+    <canvas class="gl" data-scene="egan" aria-hidden="true"></canvas>
+    <div class="product__glow" aria-hidden="true"></div>
+    <div class="wrap product__grid">
+      <div class="product__copy">
+        <span class="product__tag" data-reveal="up">Product 01</span>
+        <h3 class="product__name" data-reveal="up">EGAN</h3>
+        <p class="product__line" data-reveal="up" data-reveal-delay="0.08">
+          A digital platform built to create connected experiences.
+        </p>
+        <p class="product__body" data-reveal="up" data-reveal-delay="0.14">
+          EGAN brings layered product surfaces, structured data and real-time interfaces into one
+          coherent platform — designed to be extended as the needs behind it grow.
+        </p>
+        <ul class="product__facts" data-reveal="up" data-reveal-delay="0.2">
+          <li>Layered interface architecture</li>
+          <li>Cross-device continuity</li>
+          <li>Built for extension</li>
+        </ul>
+        <div class="product__cta" data-reveal="up" data-reveal-delay="0.26">
+          <!-- TODO: replace "#" with the official EGAN website URL -->
+          <a class="btn btn--primary magnetic" href="#" data-cursor="Open site">
+            <span>Explore EGAN</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+      </div>
+      <div class="product__stage" aria-hidden="true">
+        <div class="product__stageFrame">
+          <span class="product__stageLabel">EGAN · interface layers</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- transition band: EGAN particles -> Callesense network -->
+  <div class="morph" data-scene-section="morph" aria-hidden="true">
+    <canvas class="gl" data-scene="morph"></canvas>
+    <div class="morph__caption">
+      <span>01</span><i></i><span>02</span>
+    </div>
+  </div>
+
+  <!-- CALLESENSE -->
+  <article class="product product--callesense" data-scene-section="call" data-product="call">
+    <canvas class="gl" data-scene="call" aria-hidden="true"></canvas>
+    <div class="product__glow" aria-hidden="true"></div>
+    <div class="wrap product__grid product__grid--flip">
+      <div class="product__copy">
+        <span class="product__tag" data-reveal="up">Product 02</span>
+        <h3 class="product__name" data-reveal="up">Callesense</h3>
+        <p class="product__line" data-reveal="up" data-reveal-delay="0.08">
+          Intelligent technology for a smarter communication experience.
+        </p>
+        <p class="product__body" data-reveal="up" data-reveal-delay="0.14">
+          Callesense turns the moment a call arrives into something useful — identity, context and intent
+          resolved instantly, so people spend their attention on the conversation instead of the noise.
+        </p>
+        <ul class="product__facts" data-reveal="up" data-reveal-delay="0.2">
+          <li>Real-time caller context</li>
+          <li>Connected signal network</li>
+          <li>Designed for clarity</li>
+        </ul>
+        <div class="product__cta" data-reveal="up" data-reveal-delay="0.26">
+          <!-- TODO: replace "#" with the official Callesense website URL -->
+          <a class="btn btn--primary magnetic" href="#" data-cursor="Open site">
+            <span>Explore Callesense</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" /></svg>
+          </a>
+        </div>
+      </div>
+      <div class="product__stage" aria-hidden="true">
+        <div class="product__stageFrame">
+          <span class="product__stageLabel">Callesense · live signal</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ============================== TECHNOLOGY ============================== -->
+<section class="tech" id="technology" data-scene-section="tech">
+  <canvas class="gl" data-scene="tech" aria-hidden="true"></canvas>
+  <div class="wrap tech__wrap">
+    <div class="tech__head">
+      <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>Capabilities</p>
+      <h2 class="display display--sm" data-split="words">Engineering the Future</h2>
+      <p class="lede" data-reveal="up">
+        Eight disciplines that meet in one core. Hover a node to see where it fits.
+      </p>
+    </div>
+
+    <div class="tech__stage">
+      <div class="tech__core" aria-hidden="true">
+        <span class="tech__coreRing"></span>
+        <span class="tech__coreRing tech__coreRing--2"></span>
+        <span class="tech__coreLabel">Saharshitha<em>Core</em></span>
+      </div>
+      <ul class="tech__nodes" id="techNodes">
+        <li class="node" data-node="0" tabindex="0">
+          <span class="node__dot"></span>
+          <span class="node__name">Web</span>
+          <p class="node__desc">Fast, accessible interfaces built on modern web standards.</p>
+        </li>
+        <li class="node" data-node="1" tabindex="0">
+          <span class="node__dot"></span>
+          <span class="node__name">Mobile</span>
+          <p class="node__desc">Native-feeling experiences designed for the device in your hand.</p>
+        </li>
+        <li class="node" data-node="2" tabindex="0">
+          <span class="node__dot"></span>
+          <span class="node__name">Cloud</span>
+          <p class="node__desc">Scalable, resilient infrastructure that grows with the product.</p>
+        </li>
+        <li class="node" data-node="3" tabindex="0">
+          <span class="node__dot"></span>
+          <span class="node__name">APIs</span>
+          <p class="node__desc">Well-defined interfaces that let systems talk to each other cleanly.</p>
+        </li>
+        <li class="node" data-node="4" tabindex="0">
+          <span class="node__dot"></span>
+          <span class="node__name">Data</span>
+          <p class="node__desc">Modelling, pipelines and insight that turn activity into decisions.</p>
+        </li>
+        <li class="node" data-node="5" tabindex="0">
+          <span class="node__dot"></span>
+          <span class="node__name">AI</span>
+          <p class="node__desc">Applied intelligence where it earns its place in the workflow.</p>
+        </li>
+        <li class="node" data-node="6" tabindex="0">
+          <span class="node__dot"></span>
+          <span class="node__name">Automation</span>
+          <p class="node__desc">Removing repetitive work so people can focus on judgement.</p>
+        </li>
+        <li class="node" data-node="7" tabindex="0">
+          <span class="node__dot"></span>
+          <span class="node__name">Security</span>
+          <p class="node__desc">Protection designed in from the start, not added at the end.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== INNOVATION / JOURNEY ============================== -->
+<section class="journey" id="innovation">
+  <div class="journey__pin" id="journeyPin">
+    <div class="wrap journey__head">
+      <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>How we work</p>
+      <h2 class="display display--sm" data-split="words">Ideas are only the beginning.</h2>
+      <p class="lede" data-reveal="up">
+        We turn ideas into digital products through research, design, engineering, and continuous improvement.
+      </p>
+    </div>
+
+    <div class="journey__track" id="journeyTrack">
+      <div class="journey__rail" aria-hidden="true"><i id="journeyProgress"></i></div>
+      <ol class="journey__steps" id="journeySteps">
+        <li class="step" data-step="0"><b>IDEA</b><span>Where it starts.</span></li>
+        <li class="step" data-step="1"><b>DISCOVER</b><span>Understand the real problem.</span></li>
+        <li class="step" data-step="2"><b>DESIGN</b><span>Shape the experience.</span></li>
+        <li class="step" data-step="3"><b>BUILD</b><span>Engineer it properly.</span></li>
+        <li class="step" data-step="4"><b>LAUNCH</b><span>Ship and support it.</span></li>
+        <li class="step" data-step="5"><b>EVOLVE</b><span>Keep making it better.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== NETWORK / ECOSYSTEM ============================== -->
+<section class="network" data-scene-section="network">
+  <canvas class="gl" data-scene="network" aria-hidden="true"></canvas>
+  <div class="wrap network__wrap">
+    <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>The ecosystem</p>
+    <h2 class="display" data-split="words">One network. Many surfaces.</h2>
+    <p class="lede network__lede" data-reveal="up">
+      Products, platforms and the data between them — connected by common foundations rather than
+      stitched together afterwards.
+    </p>
+    <div class="network__legend" data-reveal="up">
+      <span><i class="dot dot--1"></i>Platforms</span>
+      <span><i class="dot dot--2"></i>Services</span>
+      <span><i class="dot dot--3"></i>Interfaces</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== VALUES ============================== -->
+<section class="values" id="values">
+  <div class="wrap">
+    <div class="values__head">
+      <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>What we stand for</p>
+      <h2 class="display display--sm" data-split="words">Principles we build on.</h2>
+    </div>
+    <div class="values__grid">
+      <article class="vcard tilt" data-reveal="up"><span class="vcard__glow"></span>
+        <h3>Innovation</h3><p>Always explore better possibilities.</p></article>
+      <article class="vcard tilt" data-reveal="up" data-reveal-delay="0.05"><span class="vcard__glow"></span>
+        <h3>Simplicity</h3><p>Make complex technology easier to use.</p></article>
+      <article class="vcard tilt" data-reveal="up" data-reveal-delay="0.1"><span class="vcard__glow"></span>
+        <h3>Ownership</h3><p>Take responsibility from idea to outcome.</p></article>
+      <article class="vcard tilt" data-reveal="up" data-reveal-delay="0.15"><span class="vcard__glow"></span>
+        <h3>Collaboration</h3><p>Build better things together.</p></article>
+      <article class="vcard tilt" data-reveal="up" data-reveal-delay="0.2"><span class="vcard__glow"></span>
+        <h3>Learning</h3><p>Continuously improve.</p></article>
+      <article class="vcard tilt" data-reveal="up" data-reveal-delay="0.25"><span class="vcard__glow"></span>
+        <h3>Integrity</h3><p>Build technology responsibly.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FUTURE / HORIZON ============================== -->
+<section class="future" data-scene-section="horizon" id="future">
+  <canvas class="gl" data-scene="horizon" aria-hidden="true"></canvas>
+  <div class="future__veil" id="futureVeil" aria-hidden="true"></div>
+  <div class="wrap future__wrap">
+    <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>What's ahead</p>
+    <h2 class="future__big">
+      <span class="line"><span class="word">The</span> <span class="word">future</span> <span class="word">isn't</span> <span class="word">something</span> <span class="word">we</span> <span class="word">wait</span> <span class="word">for.</span></span>
+      <span class="line"><span class="word grad">We</span> <span class="word grad">build</span> <span class="word grad">it.</span></span>
+    </h2>
+    <div class="future__cta" data-reveal="up">
+      <a class="btn btn--line magnetic" href="#products"><span>See what we've built</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CAREERS ============================== -->
+<section class="careers" id="careers">
+  <div class="careers__float" aria-hidden="true">
+    <span class="fl fl--code" data-depth="0.35">{ build: "better" }</span>
+    <span class="fl fl--shape" data-depth="0.55"></span>
+    <span class="fl fl--panel" data-depth="0.25"></span>
+    <span class="fl fl--chip" data-depth="0.7">API</span>
+    <span class="fl fl--chip2" data-depth="0.45">UX</span>
+    <span class="fl fl--ring" data-depth="0.6"></span>
+    <span class="fl fl--code2" data-depth="0.5">deploy --safe</span>
+  </div>
+  <div class="wrap careers__wrap">
+    <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>Careers</p>
+    <h2 class="display" data-split="words">Build the Future With Us</h2>
+    <p class="lede" data-reveal="up">
+      Join people who love technology, solving problems, and creating meaningful digital products.
+    </p>
+    <div class="careers__cta" data-reveal="up">
+      <a class="btn btn--primary magnetic" href="#contact" data-cursor="Let's talk">
+        <span>Explore Careers</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" /></svg>
+      </a>
+    </div>
+    <p class="careers__note" data-reveal="up">
+      We review every introduction personally. If your work fits where we're heading, we'll be in touch.
+    </p>
+  </div>
+</section>
+
+<!-- ============================== INSIGHTS ============================== -->
+<section class="insights" id="insights">
+  <div class="wrap">
+    <div class="insights__head">
+      <div>
+        <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>Editorial</p>
+        <h2 class="display display--sm" data-split="words">Ideas &amp; Insights</h2>
+      </div>
+      <p class="insights__note" data-reveal="up">
+        Perspectives from the teams building our products — five themes we write about.
+      </p>
+    </div>
+
+    <div class="insights__grid">
+      <article class="icard icard--wide tilt" data-reveal="up">
+        <span class="icard__media icard__media--tech" aria-hidden="true"></span>
+        <div class="icard__body">
+          <span class="icard__cat">Technology</span>
+          <h3>What modern software has to get right</h3>
+          <p>On performance budgets, resilience, and choosing boring tools that keep working.</p>
+        </div>
+      </article>
+
+      <article class="icard tilt" data-reveal="up" data-reveal-delay="0.06">
+        <span class="icard__media icard__media--inno" aria-hidden="true"></span>
+        <div class="icard__body">
+          <span class="icard__cat">Innovation</span>
+          <h3>Turning research into product</h3>
+          <p>How experiments earn their way into something people use.</p>
+        </div>
+      </article>
+
+      <article class="icard tilt" data-reveal="up" data-reveal-delay="0.12">
+        <span class="icard__media icard__media--eng" aria-hidden="true"></span>
+        <div class="icard__body">
+          <span class="icard__cat">Engineering</span>
+          <h3>Architecture that survives contact</h3>
+          <p>Designing systems that stay clear as teams and features grow.</p>
+        </div>
+      </article>
+
+      <article class="icard tilt" data-reveal="up" data-reveal-delay="0.18">
+        <span class="icard__media icard__media--prod" aria-hidden="true"></span>
+        <div class="icard__body">
+          <span class="icard__cat">Product</span>
+          <h3>Simplicity is a decision</h3>
+          <p>Why the hardest product work is usually subtraction.</p>
+        </div>
+      </article>
+
+      <article class="icard icard--wide tilt" data-reveal="up" data-reveal-delay="0.24">
+        <span class="icard__media icard__media--co" aria-hidden="true"></span>
+        <div class="icard__body">
+          <span class="icard__cat">Company</span>
+          <h3>How we work at Saharshitha</h3>
+          <p>Ownership, small teams, and the habit of continuous improvement.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CONTACT ============================== -->
+<section class="contact" id="contact" data-scene-section="contact">
+  <canvas class="gl" data-scene="contact" aria-hidden="true"></canvas>
+  <div class="contact__glow" aria-hidden="true"></div>
+  <div class="wrap contact__wrap">
+    <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>Have an idea?</p>
+    <h2 class="contact__big">
+      <span class="line"><span class="word">Let's</span> <span class="word">build</span> <span class="word">something</span></span>
+      <span class="line"><span class="word grad">meaningful.</span></span>
+    </h2>
+    <!-- TODO: point this at the real contact channel (mailto: or form endpoint) -->
+    <a class="btn btn--primary btn--xl magnetic" href="#" data-cursor="Start a conversation" data-reveal="up">
+      <span>Let's Talk</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" /></svg>
+    </a>
+    <div class="contact__meta">
+      <span>Technology • Innovation • Digital Products</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer">
+  <div class="wrap footer__wrap">
+    <div class="footer__brand">
+      <a class="footer__logo" href="#home">
+        <span class="footer__mark" aria-hidden="true">S</span>
+        <span>SAHARSHITHA <em>SOFTWARE</em></span>
+      </a>
+      <p>We build what's next.</p>
+    </div>
+
+    <nav class="footer__col" aria-label="Footer navigation">
+      <h4>Company</h4>
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#technology">Technology</a>
+      <a href="#careers">Careers</a>
+      <a href="#insights">Insights</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <!-- TODO: replace "#" with the official product site URLs -->
+      <a href="#">EGAN</a>
+      <a href="#">Callesense</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Legal">
+      <h4>Legal</h4>
+      <!-- TODO: add real legal pages -->
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </nav>
+  </div>
+
+  <div class="wrap footer__bottom">
+    <span>© 2026 Saharshitha Software. All rights reserved.</span>
+    <span class="footer__built">Designed &amp; engineered in-house.</span>
+  </div>
+</footer>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
