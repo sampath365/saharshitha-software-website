@@ -405,6 +405,8 @@ function initTechNodes() {
       n.style.left = `${px}%`;
       n.style.top = `${py}%`;
       n.dataset.base = `${px},${py}`;
+      // nodes low in the frame would push their tooltip past the stage edge
+      n.classList.toggle('is-up', py > 58);
     });
     stage.dataset.sx = String(sx);
   };
