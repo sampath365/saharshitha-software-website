@@ -36,8 +36,34 @@ function render() {
       <p>${esc(c.body)}</p>
     </article>`).join('');
 
-  $('#pdWho').innerHTML = product.who.map((w) => `
-    <div class="who" data-reveal="up"><span>${esc(w)}</span></div>`).join('');
+  const audience = product.audience?.length
+    ? product.audience
+    : product.who.map((w) => ({ title: null, body: w }));
+  $('#pdWho').innerHTML = audience.map((a) => `
+    <div class="who" data-reveal="up">
+      <span>${a.title ? `<strong>${esc(a.title)}</strong><br>` : ''}${esc(a.body)}</span>
+    </div>`).join('');
+
+  // optional blocks, shown only when the product defines them
+  const cats = $('#pdCats');
+  const catsSection = $('#pdCatsSection');
+  if (product.categories?.length) {
+    cats.innerHTML = product.categories.map((c) => `
+      <li class="cat" data-reveal="up">
+        <span class="cat__icon" aria-hidden="true">${c.icon}</span>
+        <span class="cat__name">${esc(c.name)}</span>
+      </li>`).join('');
+  } else {
+    catsSection.remove();
+  }
+
+  const vision = $('#pdVision');
+  const visionSection = $('#pdVisionSection');
+  if (product.vision) {
+    vision.textContent = product.vision;
+  } else {
+    visionSection.remove();
+  }
 
   $('#pdSwitch').innerHTML = PRODUCTS.map((p) => `
     <a href="?p=${p.id}"${p.id === product.id ? ' class="is-current" aria-current="page"' : ''}>${esc(p.name)}</a>`

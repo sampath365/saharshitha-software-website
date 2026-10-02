@@ -75,10 +75,35 @@ function buildRocket(color) {
   return g;
 }
 
+/** Satellite: body, two solar panels, a dish, and a slow tumble. */
+function buildSatellite(color) {
+  const g = new THREE.Group();
+  const mat = (c, o = 0.55) => new THREE.MeshBasicMaterial({
+    color: c, transparent: true, opacity: o,
+    blending: THREE.AdditiveBlending, depthWrite: false,
+  });
+  const body = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.3, 0.42), mat(0xdff6ff, 0.62));
+  const panelL = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.02, 0.34), mat(color, 0.42));
+  panelL.position.x = -0.62;
+  const panelR = panelL.clone();
+  panelR.position.x = 0.62;
+  const grid = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.03, 0.06), mat(0xffffff, 0.18));
+  grid.position.set(-0.62, 0.03, 0);
+  const grid2 = grid.clone();
+  grid2.position.set(0.62, 0.03, 0);
+  const dish = new THREE.Mesh(new THREE.ConeGeometry(0.17, 0.24, 12, 1, true), mat(color, 0.5));
+  dish.position.set(0, 0.24, 0.12);
+  dish.rotation.x = -0.9;
+  g.add(body, panelL, panelR, grid, grid2, dish);
+  g.add(glow(1.1, color, 0.35));
+  return g;
+}
+
 /**
- * Two ambient animations that run across the whole page:
+ * Three ambient animations that run across the whole page:
  *   - a vehicle flying past the edges with a light trail
  *   - a rocket launching, periodic, with exhaust
+ *   - a satellite drifting in a slow elliptical orbit with a blinking beacon
  * Both stay behind content and never intercept pointer events.
  */
 export function registerAmbient(engine) {
@@ -115,6 +140,10 @@ export function registerAmbient(engine) {
     car.add(carTrail);
     car.add(glow(1.8, cyan, 0.5));
     root.add(car);
+
+    // --- satellite ---
+    const satellite = buildSatellite(magenta);
+    root.add(satellite);
 
     // --- rocket ---
     const rocket = buildRocket(violet);
@@ -166,6 +195,21 @@ export function registerAmbient(engine) {
             if (c.material && c.material !== rocketTrail.material) c.material.opacity = (c.material.opacity || 0.6);
           });
         }
+
+        // satellite: slow elliptical orbit, gentle tumble, blinking beacon
+        const oa = t * 0.16;
+        satellite.position.set(
+          Math.cos(oa) * halfW * 0.78 + m.mx * 1.2,
+          Math.sin(oa * 1.3) * halfH * 0.42 + m.my * 0.9,
+          -5
+        );
+        satellite.rotation.z = oa * 0.5;
+        satellite.rotation.y = Math.sin(oa) * 0.5;
+        satellite.rotation.x = 0.22;
+        const blink = 0.55 + Math.abs(Math.sin(t * 2.2)) * 0.45;
+        satellite.children.forEach((c) => {
+          if (c.isSprite) c.material.opacity = 0.35 * blink;
+        });
 
         dust.rotation.z = t * 0.008;
       },
