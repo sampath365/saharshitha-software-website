@@ -379,6 +379,7 @@ body.menu-open .menu__links a:nth-child(7){ transition-delay:.52s }
 }
 .footer__brand p{ margin-top:18px; color:var(--ink-2); font-size:1.02rem; max-width:34ch; }
 .footer__col{ display:flex; flex-direction:column; gap:11px; }
+.footer__col h4.footer__sub{ margin-top:22px; }
 .footer__col h4{
   font-family:var(--font-mono); font-size:.66rem; letter-spacing:.26em; text-transform:uppercase;
   color:var(--ink-3); font-weight:400; margin-bottom:6px;
