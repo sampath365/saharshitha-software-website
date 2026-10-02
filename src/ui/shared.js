@@ -386,9 +386,16 @@ export function initFuture() {
   if (!section) return;
   const onScroll = () => {
     const r = section.getBoundingClientRect();
-    const p = clamp((innerHeight * 0.62 - r.top) / (r.height * 0.72));
-    section.classList.toggle('is-light', p > 0.52);
-    section.style.setProperty('--fp', p.toFixed(3));
+    const p = clamp((innerHeight - r.top) / (r.height + innerHeight));
+    // A pulse rather than a switch: the light state rises to its peak around the
+    // middle of the section and falls back, so it reads as a passage through
+    // light instead of a white slab the rest of the section sits in.
+    const pulse = Math.sin(clamp((p - 0.16) / 0.66) * Math.PI);
+    // Steepen the curve so the veil passes quickly through the mid greys, where
+    // neither light nor dark text has good contrast.
+    const light = Math.pow(pulse, 0.5);
+    section.style.setProperty('--light', light.toFixed(3));
+    section.classList.toggle('is-light', light > 0.5);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

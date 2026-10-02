@@ -613,21 +613,22 @@ html.no-webgl .gl{ display:none; }
   margin-bottom:-100vh;
 }
 .future__veil{
-  position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0;
-  transition: opacity 1.2s var(--ease);
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  /* driven continuously by scroll (--light), so the veil fades in and back out */
+  opacity: var(--light, 0);
+  transition: opacity .1s linear;
   background:
     radial-gradient(70% 60% at 50% 62%, rgba(255,255,255,.9), rgba(226,238,255,.75) 50%, rgba(198,214,240,.6) 80%),
     linear-gradient(180deg, #dfe8fb, #f2f6ff);
 }
-.future.is-light .future__veil{ opacity:1; }
 .future__wrap{ position:relative; z-index:2; }
 .future__big{
   font-size: clamp(2.3rem, 7.4vw, 6.4rem);
   font-weight:600; letter-spacing:-.045em; line-height:1.02;
   max-width: 22ch;
-  transition: color .9s var(--ease), text-shadow .9s var(--ease);
+  transition: color .1s linear, text-shadow .1s linear;
 }
-.future__big .grad{ transition: opacity .9s var(--ease); }
+.future__big .grad{ transition: opacity .1s linear; }
 .future.is-light .future__big{ color:#080c18; text-shadow: 0 1px 0 rgba(255,255,255,.4); }
 .future.is-light .future__big .grad{ opacity:.92; }
 .future.is-light .eyebrow{ color:#3c4a6b; }
