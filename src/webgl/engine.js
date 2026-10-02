@@ -201,6 +201,7 @@ export function createEngine() {
   renderer.autoClear = false;
 
   const scenes = [];
+  const ambients = [];
   const mouse = { x: 0, y: 0, tx: 0, ty: 0, active: false, ctaBoost: 0 };
   const size = { w: 0, h: 0 };
   const clock = new THREE.Clock();
@@ -232,6 +233,14 @@ export function createEngine() {
     scenes.push({ name, el, section, obj, progress: 0, smooth: 0, seen: false });
   }
 
+  /* ambient layers cover the whole viewport and sit behind all scenes */
+  function registerAmbient(factory) {
+    let obj = null;
+    try { obj = factory({ THREE, PAL, rand, lerp, clamp, damp, dotTexture, glowTexture, uiTexture }); }
+    catch (e) { console.warn('[ambient]', e); return; }
+    if (obj) ambients.push(obj);
+  }
+
   function frame() {
     requestAnimationFrame(frame);
     const dt = Math.min(clock.getDelta(), 0.05);
@@ -244,7 +253,19 @@ export function createEngine() {
 
     renderer.setScissorTest(false);
     renderer.clear(true, true, true);
-    renderer.setScissorTest(true);
+
+    // ambient pass: full viewport, behind everything
+    for (const a of ambients) {
+      renderer.setViewport(0, 0, vw * DPR, vh * DPR);
+      renderer.setScissor(0, 0, vw * DPR, vh * DPR);
+      renderer.setScissorTest(true);
+      try {
+        a.update(t, clamp(window.scrollY / Math.max(1, document.body.scrollHeight - vh)), dt, {
+          w: vw, h: vh, aspect: vw / vh, mx: mouse.x, my: mouse.y,
+        });
+      } catch (e) { /* keep the loop alive */ }
+      renderer.render(a.scene, a.camera);
+    }
 
     for (const s of scenes) {
       const r = s.el.getBoundingClientRect();
@@ -298,5 +319,5 @@ export function createEngine() {
 
   frame();
 
-  return { register, mouse, size, renderer, THREE };
+  return { register, registerAmbient, mouse, size, renderer, THREE };
 }

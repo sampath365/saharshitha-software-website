@@ -16,13 +16,40 @@ npm run preview                   # serve dist/ on 0.0.0.0:12000
 ## Architecture
 
 ```
-index.html            full page markup, all sections
-src/main.js           entry: loader, smooth scroll, nav, cursor, reveals, tilt, scene boot
+index.html            home page
+product.html          product detail, switches on ?p=<id>
+contact.html          contact details + enquiry form
+careers.html          openings + application form
+src/main.js           home page entry
+src/pages/*.js        entry per sub-page
+src/ui/shared.js      shared UI: loader, scroll, nav, cursor, reveals, tilt
+src/data/company.js   company details (PLACEHOLDERS - see below)
+src/data/products.js  the five products
+src/data/careers.js   openings list (intentionally empty)
 src/styles/base.css   design tokens, nav, buttons, cursor, loader, footer
-src/styles/sections.css  per-section layout + responsive rules
-src/webgl/engine.js   WebGL engine, shared procedural textures, multi-scene helpers
-src/webgl/scenes.js   the nine scenes
+src/styles/sections.css  home section layout + responsive rules
+src/styles/pages.css  sub-page layout
+src/webgl/engine.js   WebGL engine, shared procedural textures
+src/webgl/scenes.js   the nine home scenes
+src/webgl/ambient.js  page-wide ambient layer (flying vehicle, rocket launch)
+src/webgl/product-scene.js  per-product 3D view
 ```
+
+### Multi-page
+
+`vite.config.js` lists all four HTML entries, so `npm run build` emits four
+pages and shares three.js into one chunk. Adding a page means adding the HTML
+file, an entry under `src/pages/`, and an `input` entry in the Vite config.
+
+The product page is a single page driven by `?p=<id>` against `src/data/products.js`.
+Add a product there and the switcher, detail view and footer links all follow.
+
+### Ambient layer
+
+`src/webgl/ambient.js` registers a full-viewport layer that renders **before**
+the section scenes, so a flying vehicle and a periodically launching rocket
+travel across the page behind all content. Ambient layers are exempt from the
+per-section clipping the scenes use, since they are not tied to a section.
 
 ### One renderer, one canvas, many scenes
 

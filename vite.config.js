@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'node:path';
 
 export default defineConfig({
   // relative asset paths so the bundle works from any sub-path, including
@@ -20,5 +21,13 @@ export default defineConfig({
   build: {
     target: 'es2020',
     chunkSizeWarningLimit: 900,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        product: resolve(__dirname, 'product.html'),
+        contact: resolve(__dirname, 'contact.html'),
+        careers: resolve(__dirname, 'careers.html'),
+      },
+    },
   },
 });

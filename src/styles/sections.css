@@ -272,7 +272,7 @@ html.no-webgl .gl{ display:none; }
 }
 .lines__grid{
   display:grid; gap:12px;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+  grid-template-columns: repeat(4, minmax(0,1fr));
 }
 .line-card{
   position:relative;
@@ -302,6 +302,18 @@ html.no-webgl .gl{ display:none; }
   letter-spacing:-.015em; margin:0 0 8px;
 }
 .line-card p{ color: var(--ink-2); font-size:.86rem; line-height:1.62; }
+.line-card__link{ display:block; height:100%; }
+.line-card__more{
+  display:inline-flex; align-items:center; gap:8px; margin-top:16px;
+  font-family:var(--font-mono); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase;
+  color: var(--cyan);
+}
+.line-card__more svg{
+  width:13px;height:13px; fill:none; stroke:currentColor; stroke-width:1.8;
+  stroke-linecap:round; stroke-linejoin:round;
+  transition: transform .45s var(--ease);
+}
+.line-card:hover .line-card__more svg{ transform: translateX(4px); }
 
 .product__stageFrame{
   position:relative;
@@ -384,70 +396,61 @@ html.no-webgl .gl{ display:none; }
 .tech__coreRing--2{ inset:-28%; border-color: rgba(139,123,255,.16); animation-duration:38s; animation-direction:reverse; border-style:dashed; }
 @keyframes spin{ to{ transform: rotate(360deg); } }
 
-/* ---- fire effect ---- */
-/* Ember halo licking around the rim. */
+/* ---- core glow, in the site's own palette ---- */
+/* Warm halo replaced with the brand cyan/violet so the core sits inside the
+   page palette instead of fighting it. */
 .tech__flare{
-  position:absolute; left:50%; top:50%; width:280%; aspect-ratio:1;
+  position:absolute; left:50%; top:50%; width:210%; aspect-ratio:1;
   transform: translate(-50%,-50%); border-radius:50%;
   background: radial-gradient(circle,
-    rgba(255,214,120,.42) 0%, rgba(255,140,60,.34) 22%,
-    rgba(240,80,30,.24) 42%, rgba(170,40,10,.10) 62%, rgba(170,40,10,0) 78%);
-  filter: blur(18px);
-  animation: fireFlicker 3.2s var(--ease-io) infinite;
+    rgba(190,242,255,.30) 0%, rgba(95,227,255,.22) 30%,
+    rgba(139,123,255,.16) 54%, rgba(139,123,255,0) 74%);
+  filter: blur(14px);
+  animation: coreGlowPulse 6s var(--ease-io) infinite;
   z-index:-3;
 }
-/* Corona built from irregular blobs so the edge reads as flame, not a ring. */
+/* Corona in brand cyan, irregular so the rim reads as energy not a ring. */
 .tech__corona{
-  position:absolute; left:50%; top:50%; width:190%; aspect-ratio:1;
+  position:absolute; left:50%; top:50%; width:152%; aspect-ratio:1;
   transform: translate(-50%,-50%); border-radius:50%;
   background:
-    radial-gradient(38% 30% at 26% 22%, rgba(255,196,90,.55), transparent 70%),
-    radial-gradient(34% 28% at 74% 30%, rgba(255,150,60,.5), transparent 72%),
-    radial-gradient(40% 34% at 64% 78%, rgba(255,110,40,.42), transparent 70%),
-    radial-gradient(32% 28% at 30% 74%, rgba(255,175,80,.45), transparent 72%),
-    radial-gradient(closest-side, rgba(255,170,70,.22), rgba(230,80,20,.10) 68%, transparent 88%);
-  filter: blur(10px);
+    radial-gradient(32% 26% at 26% 22%, rgba(160,236,255,.34), transparent 72%),
+    radial-gradient(28% 24% at 74% 30%, rgba(139,123,255,.30), transparent 74%),
+    radial-gradient(34% 28% at 64% 78%, rgba(95,227,255,.26), transparent 72%),
+    radial-gradient(28% 24% at 30% 74%, rgba(190,242,255,.28), transparent 74%);
+  filter: blur(9px);
   mix-blend-mode: screen;
-  animation: fireFlicker 2.4s var(--ease-io) infinite reverse;
+  animation: coreGlowPulse 4.5s var(--ease-io) infinite reverse;
   z-index:-2;
 }
-/* Soft flame tongues rotating slowly around the core. */
+/* Slow rotating spokes, kept inside a ring mask. */
 .tech__rays{
-  position:absolute; left:50%; top:50%; width:400%; aspect-ratio:1;
+  position:absolute; left:50%; top:50%; width:250%; aspect-ratio:1;
   transform: translate(-50%,-50%);
-  animation: fireRotate 34s linear infinite;
+  animation: coreRotate 44s linear infinite;
   mix-blend-mode: screen;
   z-index:-1;
-  -webkit-mask-image: radial-gradient(circle, transparent 24%, #000 34%, #000 58%, transparent 72%);
-          mask-image: radial-gradient(circle, transparent 24%, #000 34%, #000 58%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle, transparent 32%, #000 42%, #000 54%, transparent 66%);
+          mask-image: radial-gradient(circle, transparent 32%, #000 42%, #000 54%, transparent 66%);
   background: repeating-conic-gradient(from 0deg,
-    rgba(255,180,80,.34) 0deg 3deg, rgba(255,120,40,0) 3deg 11deg,
-    rgba(255,90,30,.22) 11deg 14deg, rgba(255,90,30,0) 14deg 23deg);
+    rgba(160,236,255,.18) 0deg 2deg, rgba(95,227,255,0) 2deg 16deg,
+    rgba(139,123,255,.14) 16deg 18deg, rgba(139,123,255,0) 18deg 34deg);
   filter: blur(3px);
 }
-/* Inner ember glow that keeps the glass from looking hollow. */
+/* Inner glow, brand cyan. */
 .tech__disc{
-  position:absolute; inset:14%; border-radius:50%;
+  position:absolute; inset:16%; border-radius:50%;
   background: radial-gradient(circle,
-    rgba(255,225,150,.18) 0%, rgba(255,150,60,.11) 48%, rgba(230,80,20,0) 76%);
+    rgba(190,242,255,.22) 0%, rgba(95,227,255,.13) 50%, rgba(95,227,255,0) 78%);
   filter: blur(8px);
   mix-blend-mode: screen;
   z-index:-1;
 }
-/* The label keeps its original styling above the fire. */
-.tech__coreLabel{
-  position:relative; z-index:2;
-  font-family:var(--font-mono); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase;
-  text-align:center; color: var(--ink-2); line-height:1.7;
+@keyframes coreGlowPulse{
+  0%,100%{ opacity:.8;  transform: translate(-50%,-50%) scale(1); }
+  50%    { opacity:1;   transform: translate(-50%,-50%) scale(1.05); }
 }
-.tech__coreLabel em{ display:block; font-style:normal; color: var(--cyan); }
-@keyframes fireFlicker{
-  0%,100%{ opacity:.78; transform: translate(-50%,-50%) scale(1); }
-  28%    { opacity:1;   transform: translate(-50%,-50%) scale(1.06); }
-  46%    { opacity:.86; transform: translate(-50%,-50%) scale(1.02); }
-  68%    { opacity:.96; transform: translate(-50%,-50%) scale(1.05); }
-}
-@keyframes fireRotate{
+@keyframes coreRotate{
   to{ transform: translate(-50%,-50%) rotate(360deg); }
 }
 
@@ -773,7 +776,7 @@ html.no-webgl .gl{ display:none; }
   .product__grid::before{ height:min(70%,520px); background: radial-gradient(closest-side,
     rgba(5,6,10,.94) 0%, rgba(5,6,10,.85) 58%, rgba(5,6,10,0) 100%); }
   .values__grid, .insights__grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .lines__grid{ grid-template-columns:1fr; }
+  .lines__grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
   .icard--wide{ grid-column: span 2; }
   .footer__wrap{ grid-template-columns: 1fr 1fr; gap:34px; }
   .journey__steps{ grid-template-columns: repeat(3, minmax(0,1fr)); row-gap: 28px; }
@@ -797,6 +800,7 @@ html.no-webgl .gl{ display:none; }
   .intro__cell:last-child{ border-bottom:0; }
   .pillars{ grid-template-columns:1fr; }
   .values__grid, .insights__grid{ grid-template-columns:1fr; }
+  .lines__grid{ grid-template-columns:1fr; }
   .icard--wide{ grid-column: span 1; }
   .icard--wide .icard__media{ aspect-ratio: 16/9; }
   .tech__stage{ height: 620px; }

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Careers — Saharshitha Software</title>
+<meta name="description" content="Build the future with Saharshitha Software. Join people who love technology, solving problems, and creating meaningful digital products." />
+<meta name="theme-color" content="#05060a" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070a12'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='18' fill='%2364e6ff' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__word" id="loaderWord">S</div>
+    <div class="loader__meta">
+      <span class="loader__label">SAHARSHITHA SOFTWARE</span>
+      <span class="loader__bar"><i id="loaderBar"></i></span>
+    </div>
+  </div>
+  <div class="loader__veil"></div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__dot"></span>
+  <span class="cursor__ring"><span class="cursor__label" id="cursorLabel"></span></span>
+</div>
+
+<header class="nav" id="nav">
+  <div class="nav__shell">
+    <a class="nav__brand" href="index.html">
+      <span class="nav__mark" aria-hidden="true">S</span>
+      <span class="nav__name">SAHARSHITHA <em>SOFTWARE</em></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#technology">Technology</a>
+      <a href="careers.html" class="is-active">Careers</a>
+      <a href="index.html#insights">Insights</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn--ghost btn--sm magnetic" href="contact.html"><span>Let's Talk</span></a>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__bg" aria-hidden="true"></div>
+  <div class="menu__inner">
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="index.html"><span class="menu__idx">01</span>Home</a>
+      <a href="index.html#about"><span class="menu__idx">02</span>About</a>
+      <a href="index.html#products"><span class="menu__idx">03</span>Products</a>
+      <a href="index.html#technology"><span class="menu__idx">04</span>Technology</a>
+      <a href="careers.html"><span class="menu__idx">05</span>Careers</a>
+      <a href="index.html#insights"><span class="menu__idx">06</span>Insights</a>
+      <a href="contact.html"><span class="menu__idx">07</span>Contact</a>
+    </nav>
+    <div class="menu__foot">
+      <span>Technology • Innovation • Digital Products</span>
+      <a class="btn btn--primary magnetic" href="contact.html"><span>Let's Talk</span></a>
+    </div>
+  </div>
+</div>
+
+<main class="page">
+
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a><span aria-hidden="true">/</span><span>Careers</span>
+      </nav>
+      <p class="eyebrow"><span class="eyebrow__dot"></span>Careers</p>
+      <h1>Build the Future With Us</h1>
+      <p class="lede">
+        Join people who love technology, solving problems, and creating meaningful
+        digital products.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Open roles</h2>
+        <p class="lede">
+          We advertise a role only when we are genuinely hiring for it. When nothing
+          is listed, we still welcome introductions.
+        </p>
+      </div>
+      <div class="openings" id="openings"></div>
+    </div>
+  </section>
+
+  <section class="section" id="apply">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div data-reveal="up">
+          <h2 style="margin-bottom:20px">Apply or introduce yourself</h2>
+          <p style="color:var(--ink-2);line-height:1.75;max-width:44ch">
+            Send us your details and a link to your work. Tell us which team you are
+            interested in and what you would like to be building.
+          </p>
+          <p style="color:var(--ink-3);font-size:.88rem;line-height:1.7;margin-top:22px;max-width:44ch">
+            We review every application personally. If your work fits where we are
+            heading, we will be in touch.
+          </p>
+        </div>
+
+        <form class="form" id="applyForm" novalidate data-reveal="up" data-reveal-delay="0.1">
+          <div class="form__row">
+            <div class="field">
+              <label for="aName">Your name</label>
+              <input id="aName" name="name" type="text" placeholder="Full name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="aEmail">Email</label>
+              <input id="aEmail" name="email" type="email" placeholder="you@email.com" autocomplete="email" required />
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="aTeam">Team</label>
+              <select id="aTeam" name="team"></select>
+            </div>
+            <div class="field">
+              <label for="aRole">Role (optional)</label>
+              <input id="aRole" name="role" type="text" placeholder="e.g. Frontend Engineer" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="aPortfolio">Portfolio or profile link</label>
+            <input id="aPortfolio" name="portfolio" type="url" placeholder="https://" />
+          </div>
+          <div class="field">
+            <label for="aNote">Anything else</label>
+            <textarea id="aNote" name="note" placeholder="A short note about your work and what you would like to build."></textarea>
+          </div>
+          <div class="form__foot">
+            <button class="btn btn--primary magnetic" type="submit" data-cursor="Send">
+              <span>Send application</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" /></svg>
+            </button>
+            <p class="form__note">This opens your email app with your details ready to send.</p>
+          </div>
+          <div class="form__status" id="applyStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="next">
+    <div class="wrap next__inner">
+      <h2>Want to talk before applying?</h2>
+      <div class="next__cta">
+        <a class="btn btn--line magnetic" href="contact.html"><span>Contact us</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__wrap">
+    <div class="footer__brand">
+      <a class="footer__logo" href="index.html">
+        <span class="footer__mark" aria-hidden="true">S</span>
+        <span>SAHARSHITHA <em>SOFTWARE</em></span>
+      </a>
+      <p>We build what's next.</p>
+    </div>
+    <nav class="footer__col" aria-label="Company">
+      <h4>Company</h4>
+      <a href="index.html#about">About</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#technology">Technology</a>
+      <a href="careers.html">Careers</a>
+      <a href="index.html#insights">Insights</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="product.html?p=egan">EGAN</a>
+      <a href="product.html?p=service">EGAN Service</a>
+      <a href="product.html?p=school">School Management</a>
+      <a href="product.html?p=hospital">Hospital Management</a>
+      <a href="product.html?p=clinic">Small Clinic</a>
+    </nav>
+    <nav class="footer__col" aria-label="Legal">
+      <h4>Legal</h4>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+    </nav>
+  </div>
+  <div class="wrap footer__bottom">
+    <span>© 2026 Saharshitha Software. All rights reserved.</span>
+    <span class="footer__built">Designed &amp; engineered in-house.</span>
+  </div>
+</footer>
+
+<script type="module" src="/src/pages/careers.js"></script>
+</body>
+</html>
