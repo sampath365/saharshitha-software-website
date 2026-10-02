@@ -60,6 +60,31 @@ deliveries, which would otherwise leave it invisible at `opacity: 0` forever.
 - If WebGL is unavailable the engine returns `null`, `html.no-webgl` hides the placeholder
   canvases, and the page renders as a normal document.
 
+## Deployment
+
+The site is a static bundle, so it can be hosted anywhere that serves `dist/`.
+`vite.config.js` sets `base: './'`, so the build works from a domain root or a
+sub-path (such as a GitHub Pages project site at `/<repo>/`).
+
+### GitHub Pages
+
+`.github/workflows/deploy-pages.yml` builds on every push to `main` and deploys
+`dist/` to Pages. It runs `actions/configure-pages` with `enablement: true`, so
+the Pages site is created on the first run.
+
+This requires Pages to be enabled for the repository first. If the workflow
+fails at `configure-pages` with "Resource not accessible by integration", turn
+Pages on once by hand and re-run the workflow:
+
+> Repository → Settings → Pages → Source: **GitHub Actions**
+
+After that the site is published at
+`https://<owner>.github.io/<repo>/` and redeploys on every push.
+
+### Other hosts
+
+Any static host works: build command `npm run build`, output directory `dist`.
+
 ## Placeholders to replace before launch
 
 Search for `TODO` in `index.html`:
