@@ -24,13 +24,14 @@ src/main.js           home page entry
 src/pages/*.js        entry per sub-page
 src/ui/shared.js      shared UI: loader, scroll, nav, cursor, reveals, tilt
 src/data/company.js   company details (PLACEHOLDERS - see below)
-src/data/products.js  the five products
+src/data/products.js  the product catalogue (six)
+src/data/platforms.js live platform URLs shown on the home page
 src/data/careers.js   openings list (intentionally empty)
 src/styles/base.css   design tokens, nav, buttons, cursor, loader, footer
 src/styles/sections.css  home section layout + responsive rules
 src/styles/pages.css  sub-page layout
 src/webgl/engine.js   WebGL engine, shared procedural textures
-src/webgl/scenes.js   the nine home scenes
+src/webgl/scenes.js   the ten home scenes
 src/webgl/ambient.js  page-wide ambient layer (flying vehicle, rocket launch)
 src/webgl/product-scene.js  per-product 3D view
 ```
@@ -112,12 +113,26 @@ After that the site is published at
 
 Any static host works: build command `npm run build`, output directory `dist`.
 
+## Live product URLs
+
+Every product that is deployed has its `url` set in `src/data/products.js`, and the home
+page's "Live platforms" section reads its cards from `src/data/platforms.js`. Both are single
+sources of truth — edit them there and the home grid, the product detail strip and the
+footer "Live sites" column follow.
+
+| Platform | URL |
+|---|---|
+| EGAN | https://egan.in.net/ |
+| EGAN Education | https://eduweb.egan.in.net/login |
+| EGAN Healthcare | https://myhms.egan.in.net |
+| EGAN Payroll | https://payroll.egan.in.net/ |
+| EGAN Android app | https://egan.in.net/downloads/EGAN.apk |
+
 ## Placeholders to replace before launch
 
 Search for `TODO` in `index.html`:
 
-- EGAN and Callesense `Explore ...` CTAs and footer product links currently point at `#` and
-  need the real product site URLs.
+- Callesense has no live site yet, so its `Explore ...` CTA and footer link still point at `#`.
 - The contact CTA points at `#`; wire it to a `mailto:` or a form endpoint.
 - Privacy, Terms, and Cookies links need real pages.
 - Careers intentionally lists no openings, and Insights cards are theme descriptions rather

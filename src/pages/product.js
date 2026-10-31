@@ -30,6 +30,21 @@ function render() {
   $('#pdLine').textContent = product.line;
   $('#pdOverview').textContent = product.overview;
 
+  // live-site strip: only products with a deployed URL get one
+  const live = $('#pdLive');
+  if (product.url) {
+    live.innerHTML = `
+      <span class="pd__liveBadge"><i></i>Live now</span>
+      <span class="pd__liveHost">${esc(product.urlLabel || product.url)}</span>
+      <a class="pd__liveLink" href="${esc(product.url)}" target="_blank" rel="noopener noreferrer"
+         data-cursor="Open live site">
+        <span>Open the live site</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+      </a>`;
+  } else {
+    live.remove();
+  }
+
   $('#pdCaps').innerHTML = product.capabilities.map((c) => `
     <article class="cap" data-reveal="up">
       <h3>${esc(c.title)}</h3>

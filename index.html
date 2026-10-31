@@ -46,6 +46,7 @@
       <a href="#home" class="is-active" data-nav>Home</a>
       <a href="#about" data-nav>About</a>
       <a href="#products" data-nav>Products</a>
+      <a href="#platforms" data-nav>Platforms</a>
       <a href="#technology" data-nav>Technology</a>
       <a href="careers.html">Careers</a>
       <a href="#insights" data-nav>Insights</a>
@@ -72,10 +73,11 @@
       <a href="#home"><span class="menu__idx">01</span>Home</a>
       <a href="#about"><span class="menu__idx">02</span>About</a>
       <a href="#products"><span class="menu__idx">03</span>Products</a>
-      <a href="#technology"><span class="menu__idx">04</span>Technology</a>
-      <a href="careers.html"><span class="menu__idx">05</span>Careers</a>
-      <a href="#insights"><span class="menu__idx">06</span>Insights</a>
-      <a href="contact.html"><span class="menu__idx">07</span>Contact</a>
+      <a href="#platforms"><span class="menu__idx">04</span>Platforms</a>
+      <a href="#technology"><span class="menu__idx">05</span>Technology</a>
+      <a href="careers.html"><span class="menu__idx">06</span>Careers</a>
+      <a href="#insights"><span class="menu__idx">07</span>Insights</a>
+      <a href="contact.html"><span class="menu__idx">08</span>Contact</a>
     </nav>
     <div class="menu__foot">
       <span>Technology • Innovation • Digital Products</span>
@@ -124,7 +126,7 @@
       <span class="scrollcue__line" aria-hidden="true"><i></i></span>
     </a>
     <div class="hero__stat">
-      <div class="hero__statItem"><b>02</b><span>Digital products</span></div>
+      <div class="hero__statItem"><b>04</b><span>Platforms live</span></div>
       <div class="hero__statItem"><b>08</b><span>Engineering disciplines</span></div>
       <div class="hero__statItem"><b>∞</b><span>Room to build</span></div>
     </div>
@@ -397,6 +399,111 @@
   </div>
 </section>
 
+<!-- ============================== LIVE PLATFORMS ============================== -->
+<section class="platforms" id="platforms" data-scene-section="platforms">
+  <canvas class="gl" data-scene="platforms" aria-hidden="true"></canvas>
+  <div class="wrap platforms__wrap">
+    <div class="platforms__head">
+      <p class="eyebrow" data-reveal="up"><span class="eyebrow__dot"></span>Live platforms</p>
+      <h2 class="display display--sm" data-split="words">Live today. Open to everyone.</h2>
+      <p class="lede" data-reveal="up">
+        Four product surfaces are running in production right now. Each one below is a real,
+        working site — open it in a new tab and see the software rather than a screenshot of it.
+      </p>
+    </div>
+
+    <!-- Cards are rendered from src/data/platforms.js so a new host is a one-line change. -->
+    <ul class="platforms__grid" id="platformGrid">
+      <li class="pcard" data-reveal="up">
+        <a class="pcard__link" href="https://egan.in.net/" target="_blank" rel="noopener noreferrer" data-cursor="Open EGAN">
+          <span class="pcard__glow" aria-hidden="true"></span>
+          <span class="pcard__top">
+            <span class="pcard__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg></span>
+            <span class="pcard__kind">Customer app</span>
+          </span>
+          <span class="pcard__name">EGAN</span>
+          <span class="pcard__line">One platform, multiple services, smarter living.</span>
+          <span class="pcard__body">The customer-facing surface. Everyday services, local businesses and digital commerce meet in one place, with ordering, bookings and delivery handled in the same flow.</span>
+          <span class="pcard__tags"><i>Services</i><i>Commerce</i><i>Delivery</i></span>
+          <span class="pcard__go">
+            <span class="pcard__host">egan.in.net</span>
+            <span class="pcard__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+          </span>
+        </a>
+      </li>
+      <li class="pcard" data-reveal="up" data-reveal-delay="0.06">
+        <a class="pcard__link" href="https://eduweb.egan.in.net/login" target="_blank" rel="noopener noreferrer" data-cursor="Open EGAN Education">
+          <span class="pcard__glow" aria-hidden="true"></span>
+          <span class="pcard__top">
+            <span class="pcard__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5M5 10v9h14v-9M9.5 19v-5h5v5"/></svg></span>
+            <span class="pcard__kind">School management</span>
+          </span>
+          <span class="pcard__name">EGAN Education</span>
+          <span class="pcard__line">The school day, administered in one connected system.</span>
+          <span class="pcard__body">Admissions, student records, attendance, academics and fees for schools, with parent communication kept on the same record the staff work from.</span>
+          <span class="pcard__tags"><i>Students</i><i>Attendance</i><i>Fees</i></span>
+          <span class="pcard__go">
+            <span class="pcard__host">eduweb.egan.in.net</span>
+            <span class="pcard__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+          </span>
+        </a>
+      </li>
+      <li class="pcard" data-reveal="up" data-reveal-delay="0.12">
+        <a class="pcard__link" href="https://myhms.egan.in.net" target="_blank" rel="noopener noreferrer" data-cursor="Open EGAN Healthcare">
+          <span class="pcard__glow" aria-hidden="true"></span>
+          <span class="pcard__top">
+            <span class="pcard__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/><rect x="3.5" y="3.5" width="17" height="17" rx="4"/></svg></span>
+            <span class="pcard__kind">Hospital management</span>
+          </span>
+          <span class="pcard__name">EGAN Healthcare</span>
+          <span class="pcard__line">Patient information that follows the patient, not the department.</span>
+          <span class="pcard__body">Appointments, departments, patient records and billing for hospitals and clinics — one record moving through the visit instead of being rebuilt at every desk.</span>
+          <span class="pcard__tags"><i>Patients</i><i>Appointments</i><i>Billing</i></span>
+          <span class="pcard__go">
+            <span class="pcard__host">myhms.egan.in.net</span>
+            <span class="pcard__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+          </span>
+        </a>
+      </li>
+      <li class="pcard" data-reveal="up" data-reveal-delay="0.18">
+        <a class="pcard__link" href="https://payroll.egan.in.net/" target="_blank" rel="noopener noreferrer" data-cursor="Open EGAN Payroll">
+          <span class="pcard__glow" aria-hidden="true"></span>
+          <span class="pcard__top">
+            <span class="pcard__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h10M7 8.5h10M16 4c0 3.6-2.4 5.2-5.6 5.2H7l7 10.8"/></svg></span>
+            <span class="pcard__kind">Payroll &amp; HR</span>
+          </span>
+          <span class="pcard__name">EGAN Payroll</span>
+          <span class="pcard__line">The monthly payroll run, closed on time and on record.</span>
+          <span class="pcard__body">Employee masters, salary structures, attendance, statutory deductions and payslips, so a payroll cycle can be prepared, reviewed and closed without a spreadsheet rebuild.</span>
+          <span class="pcard__tags"><i>Salary</i><i>Statutory</i><i>Payslips</i></span>
+          <span class="pcard__go">
+            <span class="pcard__host">payroll.egan.in.net</span>
+            <span class="pcard__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M12 5l7 7-7 7"/></svg></span>
+          </span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="platforms__foot" data-reveal="up">
+      <div class="dl" id="appDownload">
+        <span class="dl__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg></span>
+        <span class="dl__copy">
+          <strong>EGAN for Android</strong>
+          <span>Install the EGAN Android app directly, without going through a store listing.</span>
+        </span>
+        <a class="btn btn--primary magnetic" href="https://egan.in.net/downloads/EGAN.apk" download data-cursor="Download APK">
+          <span>Download APK</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <p class="platforms__note">
+        Customer, school, hospital and payroll surfaces share one account, permission and
+        reporting layer. Add a module without rebuilding the ones already in production.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ============================== INNOVATION / JOURNEY ============================== -->
 <section class="journey" id="innovation">
   <div class="journey__pin" id="journeyPin">
@@ -621,7 +728,17 @@
       <a href="product.html?p=school">School Management</a>
       <a href="product.html?p=hospital">Hospital Management</a>
       <a href="product.html?p=clinic">Small Clinic</a>
+      <a href="product.html?p=payroll">Payroll</a>
       <a href="#">Callesense</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Live sites">
+      <h4>Live sites</h4>
+      <a href="https://egan.in.net/" target="_blank" rel="noopener noreferrer">egan.in.net</a>
+      <a href="https://eduweb.egan.in.net/login" target="_blank" rel="noopener noreferrer">eduweb.egan.in.net</a>
+      <a href="https://myhms.egan.in.net" target="_blank" rel="noopener noreferrer">myhms.egan.in.net</a>
+      <a href="https://payroll.egan.in.net/" target="_blank" rel="noopener noreferrer">payroll.egan.in.net</a>
+      <a href="https://egan.in.net/downloads/EGAN.apk" target="_blank" rel="noopener noreferrer">Download EGAN APK</a>
     </nav>
 
     <nav class="footer__col" aria-label="Legal">

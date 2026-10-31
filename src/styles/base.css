@@ -367,8 +367,8 @@ body.menu-open .menu__links a:nth-child(7){ transition-delay:.52s }
   padding-top: clamp(60px,8vw,110px);
 }
 .footer__wrap{
-  display:grid; gap:44px;
-  grid-template-columns: 1.5fr repeat(3, minmax(0,1fr));
+  display:grid; gap:38px;
+  grid-template-columns: 1.4fr repeat(4, minmax(0,1fr));
   padding-bottom: 56px;
 }
 .footer__logo{ display:flex; align-items:center; gap:12px; font-family:var(--font-display); font-weight:600; letter-spacing:.14em; font-size:.86rem; }

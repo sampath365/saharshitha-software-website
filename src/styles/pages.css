@@ -151,6 +151,42 @@
   background: linear-gradient(102deg,#8df0ff,#b9c6ff 45%,#e6d8ff);
 }
 
+/* live-site strip: the badge, the host and the outbound link */
+.pd__live{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  margin-top:26px; padding-top:22px; border-top:1px solid var(--line);
+}
+.pd__liveBadge{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-mono); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase;
+  color: var(--cyan); padding:7px 13px; border-radius:100px;
+  border:1px solid rgba(95,227,255,.28); background: rgba(95,227,255,.07);
+}
+.pd__liveBadge i{
+  width:6px;height:6px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 10px 2px rgba(95,227,255,.75);
+  animation: livePulse 2.4s var(--ease-io) infinite;
+}
+@keyframes livePulse{ 0%,100%{opacity:1} 50%{opacity:.35} }
+.pd__liveHost{
+  font-family:var(--font-mono); font-size:.72rem; letter-spacing:.04em;
+  color: var(--ink-2); word-break:break-all;
+}
+.pd__liveLink{
+  display:inline-flex; align-items:center; gap:9px;
+  font-family:var(--font-display); font-size:.9rem; color:var(--ink);
+  padding:9px 18px; border-radius:100px; border:1px solid var(--line-strong);
+  background: rgba(255,255,255,.03);
+  transition: border-color .4s, background-color .4s, color .4s;
+}
+.pd__liveLink svg{
+  width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round; stroke-linejoin:round;
+  transition: transform .45s var(--ease);
+}
+.pd__liveLink:hover{ border-color: rgba(95,227,255,.6); background: rgba(95,227,255,.08); }
+.pd__liveLink:hover svg{ transform: translateX(4px); }
+
 /* ---- contact ---- */
 .contact-grid{
   display:grid; gap: clamp(30px,4.5vw,64px);

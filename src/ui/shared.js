@@ -18,6 +18,25 @@ export const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 export let lenis = null;
 
 /* ============================================================
+   0. ICONS
+   ------------------------------------------------------------
+   Inline SVG paths used by data-driven cards (live platforms, the
+   Android download). Kept here so the data modules stay free of markup.
+   ============================================================ */
+export const ICONS = {
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/>',
+  cap: '<path d="M3 9.5 12 4l9 5.5M5 10v9h14v-9M9.5 19v-5h5v5"/>',
+  cross: '<path d="M12 6v12M6 12h12"/><rect x="3.5" y="3.5" width="17" height="17" rx="4"/>',
+  rupee: '<path d="M7 4h10M7 8.5h10M16 4c0 3.6-2.4 5.2-5.6 5.2H7l7 10.8"/>',
+  download: '<path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/>',
+  arrow: '<path d="M5 12h13M12 5l7 7-7 7"/>',
+};
+
+export const icon = (name) => (
+  `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ICONS.globe}</svg>`
+);
+
+/* ============================================================
    1. LOADER
    ============================================================ */
 const STEPS = ['S', 'SA', 'SAH', 'SAHA', 'SAHARSHITHA', 'SAHARSHITHA SOFTWARE'];
@@ -78,8 +97,9 @@ export function initNav() {
   const nav = $('#nav');
   const indicator = $('#navIndicator');
   const links = $$('.nav__links a[data-nav]');
-  const sections = ['#home', '#about', '#products', '#technology', '#careers', '#insights', '#contact']
-    .map((s) => $(s)).filter(Boolean);
+  // derive the scroll-spy targets from the links themselves so the index of a
+  // section always matches the index of its link (careers links off-page)
+  const sections = links.map((a) => $(a.getAttribute('href'))).filter(Boolean);
 
   const moveIndicator = (a) => {
     if (!indicator) return;
@@ -494,3 +514,53 @@ export function initContactAndParallax(engine) {
   });
 }
 
+
+/* ============================================================
+   13. LIVE PLATFORM LINKS
+   ------------------------------------------------------------
+   Renders the data-driven "live platforms" grid and the Android
+   download card. Every card is a real anchor, so it works without JS
+   only if the markup is present — see the static fallback in the HTML.
+   ============================================================ */
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
+  { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+));
+
+export function initPlatforms({ platforms, app }) {
+  const grid = $('#platformGrid');
+  if (grid && platforms?.length) {
+    grid.innerHTML = platforms.map((p, i) => `
+      <li class="pcard" data-reveal="up" data-reveal-delay="${(i * 0.06).toFixed(2)}">
+        <a class="pcard__link" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer"
+           data-cursor="Open ${esc(p.name)}" aria-label="${esc(p.name)} — ${esc(p.line)} (opens in a new tab)">
+          <span class="pcard__glow" aria-hidden="true"></span>
+          <span class="pcard__top">
+            <span class="pcard__icon" aria-hidden="true">${icon(p.icon)}</span>
+            <span class="pcard__kind">${esc(p.kind)}</span>
+          </span>
+          <span class="pcard__name">${esc(p.name)}</span>
+          <span class="pcard__line">${esc(p.line)}</span>
+          <span class="pcard__body">${esc(p.body)}</span>
+          <span class="pcard__tags">${p.tags.map((t) => `<i>${esc(t)}</i>`).join('')}</span>
+          <span class="pcard__go">
+            <span class="pcard__host">${esc(p.host)}</span>
+            <span class="pcard__arrow" aria-hidden="true">${icon('arrow')}</span>
+          </span>
+        </a>
+      </li>`).join('');
+  }
+
+  const dl = $('#appDownload');
+  if (dl && app) {
+    dl.innerHTML = `
+      <span class="dl__icon" aria-hidden="true">${icon('download')}</span>
+      <span class="dl__copy">
+        <strong>${esc(app.name)}</strong>
+        <span>${esc(app.body)}</span>
+      </span>
+      <a class="btn btn--primary magnetic" href="${esc(app.url)}" download
+         data-cursor="Download APK">
+        <span>Download APK</span>${icon('arrow')}
+      </a>`;
+  }
+}

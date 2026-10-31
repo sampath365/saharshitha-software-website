@@ -1,9 +1,12 @@
 /**
  * Product catalogue.
  *
- * The five products are presented on one detail page (product.html) that
- * switches content by ?p=<id>. Copy here describes each product's purpose; it
- * makes no claims about specific features, certifications or customers.
+ * The products are presented on one detail page (product.html) that switches
+ * content by ?p=<id>. Copy here describes each product's purpose; it makes no
+ * claims about specific features, certifications or customers.
+ *
+ * `url` is the live product site, where one exists. `getProduct()` is the only
+ * reader, so adding a product here also adds it to the switcher and footers.
  */
 
 export const PRODUCTS = [
@@ -13,6 +16,8 @@ export const PRODUCTS = [
     tag: 'Platform',
     accent: 'cyan',
     line: 'A digital platform built to create connected experiences.',
+    url: 'https://egan.in.net/',
+    urlLabel: 'egan.in.net',
     summary:
       'EGAN brings layered product surfaces, structured data and real-time interfaces into one coherent platform — designed to be extended as the needs behind it grow.',
     overview:
@@ -39,6 +44,8 @@ export const PRODUCTS = [
     line: 'Everything you need, connected in one place.',
     summary:
       'EGAN Service is an all-in-one digital platform that connects customers with everyday services, products, businesses, professionals and local opportunities in one place.',
+    url: 'https://egan.in.net/',
+    urlLabel: 'egan.in.net',
     overview:
       'From home services, agriculture, plants and gardening, food and grocery, cakes and bakery, healthcare, education, transportation, accommodation, jobs, real estate, events and local businesses to on-demand delivery and bookings — EGAN makes it easier to discover, order, book and manage services near you.',
     vision:
@@ -92,6 +99,8 @@ export const PRODUCTS = [
     line: 'Administration, academics and communication for schools in one connected system.',
     summary:
       'EGAN School Management brings the day-to-day running of a school into a single system — students, staff, attendance, academics and parent communication.',
+    url: 'https://eduweb.egan.in.net/login',
+    urlLabel: 'eduweb.egan.in.net',
     overview:
       'Schools run on information that is usually spread across registers, spreadsheets and messaging groups. EGAN School Management consolidates that into one place, so staff spend their time on students rather than on reconciling records.',
     capabilities: [
@@ -116,6 +125,8 @@ export const PRODUCTS = [
     line: 'Patient records, appointments, departments and billing in a single workflow.',
     summary:
       'EGAN Hospital Management connects the clinical and administrative sides of a hospital so patient information follows the patient, not the department.',
+    url: 'https://myhms.egan.in.net',
+    urlLabel: 'myhms.egan.in.net',
     overview:
       'In a hospital, the same patient is seen by several departments in one visit. EGAN Hospital Management keeps one record moving with them — reducing repeated questions, duplicated entries and information that never reaches the next desk.',
     capabilities: [
@@ -140,6 +151,8 @@ export const PRODUCTS = [
     line: 'Mobile-first software for small clinics — appointments, patient history and daily operations.',
     summary:
       'EGAN Small Clinic is designed for practices that run lean. It works from a phone, needs no server room, and covers the essentials of a clinic day.',
+    url: 'https://myhms.egan.in.net',
+    urlLabel: 'myhms.egan.in.net',
     overview:
       'Small clinics rarely have an IT team, and usually do not need the weight of a hospital system. EGAN Small Clinic covers what a single practice actually uses — patients, appointments, notes and payments — in software that runs on the device already in the room.',
     capabilities: [
@@ -154,6 +167,32 @@ export const PRODUCTS = [
       'Single-practitioner and small multi-doctor clinics',
       'Practices with no dedicated IT support',
       'Clinics that want records searchable rather than on paper',
+    ],
+  },
+  {
+    id: 'payroll',
+    name: 'EGAN Payroll',
+    tag: 'Payroll & HR',
+    accent: 'violet',
+    line: 'Salaries, attendance and statutory deductions, run on a schedule you can rely on.',
+    summary:
+      'EGAN Payroll runs the monthly payroll cycle for an organisation — employees, salary structures, attendance, deductions, payslips and reports — in one place.',
+    overview:
+      'Payroll is the part of HR that has to be right every single month. EGAN Payroll keeps employee records, salary structures, attendance and deduction rules together, so a run can be prepared, reviewed and closed without rebuilding the same spreadsheets from scratch.',
+    url: 'https://payroll.egan.in.net/',
+    urlLabel: 'payroll.egan.in.net',
+    capabilities: [
+      { title: 'Employee records', body: 'Joining, exit, department and bank details in one master.' },
+      { title: 'Salary structures', body: 'Earnings and components defined once, reused every cycle.' },
+      { title: 'Attendance & leave', body: 'The days actually worked feeding directly into the run.' },
+      { title: 'Statutory deductions', body: 'Provident fund, professional tax, insurance and TDS handled together.' },
+      { title: 'Payslips', body: 'Generated for the whole organisation, ready to distribute.' },
+      { title: 'Reports', body: 'Cost summaries, registers and statements for finance.' },
+    ],
+    who: [
+      'Companies running payroll in-house on spreadsheets',
+      'HR and finance teams who need one accurate salary record',
+      'Organisations that want attendance, leave and payroll reconciled',
     ],
   },
 ];

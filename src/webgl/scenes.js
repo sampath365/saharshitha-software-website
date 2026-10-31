@@ -643,6 +643,90 @@ export function registerScenes(engine) {
   });
 
   /* ============================================================
+     PLATFORMS — four linked hubs with orbiting satellites, behind
+     the live-site cards. HUB order matches PLATFORMS in the data.
+     ============================================================ */
+  R('platforms', () => {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(46, 1, 0.1, 100);
+    camera.position.set(0, 0.6, 9.2);
+
+    const root = new THREE.Group();
+    scene.add(root);
+
+    const HUB = [
+      [-2.6, 0.9, 0],
+      [2.6, 0.9, 0],
+      [-2.6, -1.1, 0],
+      [2.6, -1.1, 0],
+    ];
+    const hubGeo = new THREE.BufferGeometry();
+    hubGeo.setAttribute('position', new THREE.Float32BufferAttribute(HUB.flat(), 3));
+    hubGeo.setAttribute('color', new THREE.Float32BufferAttribute(
+      [0.37, 0.89, 1, 0.55, 0.48, 1, 0.37, 0.89, 1, 0.55, 0.48, 1], 3));
+    const hubs = new THREE.Points(hubGeo, new THREE.PointsMaterial({
+      size: 0.42, map: dotTexture(), vertexColors: true, transparent: true,
+      opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending,
+    }));
+
+    const edges = [];
+    for (let i = 0; i < HUB.length; i++) {
+      for (let j = i + 1; j < HUB.length; j++) edges.push(...HUB[i], ...HUB[j]);
+    }
+    const edgeGeo = new THREE.BufferGeometry();
+    edgeGeo.setAttribute('position', new THREE.Float32BufferAttribute(edges, 3));
+    const lines = new THREE.LineSegments(edgeGeo, new THREE.LineBasicMaterial({
+      color: cyan, transparent: true, opacity: 0.16, depthWrite: false, blending: THREE.AdditiveBlending,
+    }));
+
+    const SAT = 34;
+    const base = new Float32Array(HUB.length * SAT * 3);
+    const satSeed = [];
+    for (let h = 0; h < HUB.length; h++) {
+      for (let s = 0; s < SAT; s++) {
+        const i = (h * SAT + s) * 3;
+        const r = 0.7 + Math.random() * 0.9;
+        const a = Math.random() * Math.PI * 2;
+        base[i] = HUB[h][0] + Math.cos(a) * r;
+        base[i + 1] = HUB[h][1] + Math.sin(a) * r * 0.6;
+        base[i + 2] = (Math.random() - 0.5) * 1.4;
+        satSeed.push({ hub: h, r, a });
+      }
+    }
+    const satGeo = new THREE.BufferGeometry();
+    satGeo.setAttribute('position', new THREE.Float32BufferAttribute(base, 3));
+    const sats = new THREE.Points(satGeo, new THREE.PointsMaterial({
+      size: 0.07, map: dotTexture(), color: violet, transparent: true,
+      opacity: 0.7, depthWrite: false, blending: THREE.AdditiveBlending,
+    }));
+
+    const dust = basic(700, cloud(700, 7, 15, 1), { size: 0.05, opacity: 0.4 });
+
+    root.add(lines, hubs, sats, dust, glowSprite(10, cyan, 0.16));
+
+    return {
+      scene, camera,
+      update(t, p, dt, m) {
+        const arr = satGeo.attributes.position.array;
+        for (let k = 0; k < satSeed.length; k++) {
+          const { hub, r, a } = satSeed[k];
+          const ang = a + t * 0.24 * (hub % 2 ? -1 : 1);
+          const i = k * 3;
+          arr[i] = HUB[hub][0] + Math.cos(ang) * r;
+          arr[i + 1] = HUB[hub][1] + Math.sin(ang) * r * 0.6;
+        }
+        satGeo.attributes.position.needsUpdate = true;
+
+        hubs.material.size = 0.38 + Math.sin(t * 1.4) * 0.05;
+        lines.material.opacity = 0.12 + Math.abs(m.mx) * 0.1;
+        root.rotation.y = m.mx * 0.22 + Math.sin(t * 0.12) * 0.05;
+        root.rotation.x = -m.my * 0.12;
+        dust.rotation.y = -t * 0.012;
+      },
+    };
+  });
+
+  /* ============================================================
      NETWORK — formless cloud resolving into the ecosystem shape
      ============================================================ */
   R('network', () => {

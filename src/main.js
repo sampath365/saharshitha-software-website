@@ -5,10 +5,11 @@ import './styles/pages.css';
 import { createEngine } from './webgl/engine.js';
 import { registerScenes } from './webgl/scenes.js';
 import { registerAmbient } from './webgl/ambient.js';
+import { PLATFORMS, APP_DOWNLOAD } from './data/platforms.js';
 import {
   $, $$, lenis, runLoader, initScroll, initNav, initCursor, initMagnetic,
   initReveals, initSplits, initTilt, initJourney, initFuture, initTechNodes,
-  initContactAndParallax, scrollTo,
+  initContactAndParallax, initPlatforms, scrollTo,
 } from './ui/shared.js';
 
 /* ============================================================
@@ -19,6 +20,10 @@ function boot() {
   initNav();
   initCursor();
   initMagnetic();
+
+  // render the live-platform grid before reveals so its cards animate in
+  initPlatforms({ platforms: PLATFORMS, app: APP_DOWNLOAD });
+
   initReveals();
   initSplits();
   initTilt();
