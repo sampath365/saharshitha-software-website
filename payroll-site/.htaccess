@@ -1,0 +1,29 @@
+# ---- payroll.egan.in.net -------------------------------------------------
+# Static site, no build step. This docroot is a sibling of the main domain
+# root, so the egan.in.net rewrites in public_html/.htaccess never apply here.
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS, preserving the path.
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://payroll.egan.in.net/$1 [R=301,L]
+</IfModule>
+
+# ---- Caching -------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  # Never cache the HTML entry point, so a new deploy is picked up immediately.
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

@@ -16,6 +16,7 @@ npm run preview                   # serve dist/ on 0.0.0.0:12000
 ## Architecture
 
 ```
+payroll-site/         standalone EGAN Payroll site -> payroll.egan.in.net
 index.html            home page
 product.html          product detail, switches on ?p=<id>
 contact.html          contact details + enquiry form
@@ -87,6 +88,22 @@ deliveries, which would otherwise leave it invisible at `opacity: 0` forever.
   buttons, cursor, and the long pinned scroll distances.
 - If WebGL is unavailable the engine returns `null`, `html.no-webgl` hides the placeholder
   canvases, and the page renders as a normal document.
+
+## The EGAN Payroll site
+
+`payroll-site/` is a self-contained static site served at
+`https://payroll.egan.in.net/`. It has **no build step** — plain HTML, one CSS file and one
+JS file — because it is deployed straight into its own cPanel document root rather than
+through Vite. Its `.htaccess` forces HTTPS and disables directory listing.
+
+To deploy it:
+
+```bash
+cd payroll-site
+tar -czf /tmp/payroll-site.tgz index.html robots.txt sitemap.xml assets .htaccess
+scp /tmp/payroll-site.tgz <user>@<host>:/tmp/
+ssh <user>@<host> 'tar -xzf /tmp/payroll-site.tgz -C ~/public_html/payroll.egan.in.net'
+```
 
 ## Deployment
 
